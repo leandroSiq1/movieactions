@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Main, Container, ModalMovie } from './styles';
+
+import { Main, Container } from './styles';
 
 import api from '../../services/api';
-
 import Card from '../../components/Card';
+import ModalMovie from '../../components/ModalMovie';
 
 export default function Home() {
-  const [isModalMovie, setIsModalMovie] = useState(false);
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -18,21 +18,17 @@ export default function Home() {
     loadingMovies();
   }, []);
 
-  function openModalMovie() {
-    setIsModalMovie(!isModalMovie)
-  } 
-
   return (
     <Main>
       <Container>
+        {/* <ModalMovie /> */}
         {
           movies.map(movie => {
             return (
               <Card 
                 key={movie.id}
                 title={movie.nome}
-                image={movie.foto} 
-                callback={openModalMovie}
+                image={movie.foto}
               />
             );
           })
