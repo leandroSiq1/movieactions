@@ -44,8 +44,7 @@ export const Description = styled.footer`
     font-size: 23px;
     padding-bottom: 13px;
   }
-  > a {
-    display: block;
+  > button {
     padding: 8px 30px;
 
     background: var(--color-purple);

@@ -9,6 +9,11 @@ import ModalMovie from '../../components/ModalMovie';
 export default function Home() {
   const [movies, setMovies] = useState([]);
 
+  const [movieOn, setMovieOn] = useState({});
+  const [modalOn, setModalOn] = useState(false);
+
+  const [stateBody, setStateBody] = useState("hidden");
+
   useEffect(() => {
     async function loadingMovies() {
       const response = await api.get("r-api/?api=filmes/");
@@ -18,10 +23,34 @@ export default function Home() {
     loadingMovies();
   }, []);
 
+  async function openModalMovie(movieId) {
+    const movie = await api.get(`r-api/?api=filmes/${movieId}`);
+    
+    setMovieOn({ ...movie.data });
+    setModalOn(true);
+    setStateBody("hidden");
+  }
+
+  function closeModalMovie() {
+    setMovieOn({});
+    setModalOn(false);
+    setStateBody("initial")
+  }
+
+  function bodyOverflow() {
+    document.body.style.overflow = stateBody;
+  }
+
+  bodyOverflow();
+
   return (
     <Main>
       <Container>
-        {/* <ModalMovie /> */}
+        { 
+          modalOn ? 
+          <ModalMovie image={movieOn.foto} title={movieOn.nome} text={movieOn.sinopse} callback={closeModalMovie} />
+          : ""
+        }
         {
           movies.map(movie => {
             return (
@@ -29,6 +58,7 @@ export default function Home() {
                 key={movie.id}
                 title={movie.nome}
                 image={movie.foto}
+                callback={() => openModalMovie(movie.id)}
               />
             );
           })

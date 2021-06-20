@@ -1,22 +1,30 @@
-import { Container, Box, Sinopse, Actions } from './styles';
 
-export default function ModalMovie() {
+import { Container, Box, Sinopse, Actions, Group, Banner, CloseIcon } from './styles';
+
+export default function ModalMovie({  image, title, text, callback }) {
+
   return (
     <Container>
+      <CloseIcon onClick={callback} >X</CloseIcon>
       <Box>
-        <img src="https://github.com/leandrosiq1.png" />
-        <h2>Os Vingadores de Leandro</h2>
-        <Sinopse>
-          <h3>Sinopse:</h3>
+        <Banner image={image}>
+          <Actions>
+            <a target="_blank" href={`https://www.youtube.com/results?search_query=filme+${title}`}>Trailer</a>
 
-          <p>
-            Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja
-          </p>
-        </Sinopse>
-        <Actions>
-          <a target="_blank" href="https://github.com/leandrosiq1">Trailer</a>
-          <button>Salvar</button>
-        </Actions>
+            <button type="button">Salvar</button>
+          </Actions>
+        </Banner>
+        
+        <Group>
+          <h2>{title}</h2>
+          <Sinopse>
+            <h3>Sinopse:</h3>
+
+            <p>
+              {text}
+            </p>
+          </Sinopse>
+        </Group>
       </Box>
     </Container>
   );

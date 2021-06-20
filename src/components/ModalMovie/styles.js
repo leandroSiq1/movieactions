@@ -4,54 +4,47 @@ export const Container = styled.div`
   width: 100%;
   height: 100vh;
 
-  background: rgba(200,200,200,0.2);
+  background: rgba(0,0,0,0.7);
 
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
 
   display: flex;
   align-items: center;
   justify-content: center;
+
+  padding: 20px;
 `;
 
 export const Box = styled.div`
   width: min(800px, 90%);
-  height: 700px;
+  height: 600px;
 
   text-align: center;
-  background: var(--color-shape);
+  background: var(--color-background);
   border-radius: 20px;
 
-  > img {
-    width: 100%;
-    height: min(460px, 70%);
-
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-
-    object-fit: cover;
-    object-position: center;
-  }
   > h2 {
     padding: 10px;
   }
 `;
 
-export const Sinopse = styled.div`
+export const Banner = styled.div`
   width: 100%;
-  min-height: 120px;
+  height: 60%;
 
-  text-align: left;
+  background-image: ${props => `url(${props.image})`};
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 
-  > h3 {
-    padding: 10px;
-    color: var(--color-purple);
-  } 
-  > p {
-    text-align: center;
-    font-size: 17px;
-  }
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 `;
 
 export const Actions = styled.div`
@@ -100,5 +93,45 @@ export const Actions = styled.div`
     &:hover {
       transform: scale(1.08);
     }
+  }
+`;
+
+export const Group = styled.div`
+  width: 100%;
+  padding: 40px;
+`;
+
+export const Sinopse = styled.div`
+  width: 100%;
+  max-height: 120px;
+
+  padding: 15px;
+  text-align: left;
+  overflow: auto;
+
+  > h3 {
+    padding: 10px;
+    color: var(--color-purple);
+  } 
+  > p {
+    text-align: center;
+    font-size: 17px;
+  }
+`;
+
+export const CloseIcon = styled.h3`
+  font-size: 35px;
+  font-weight: bold;
+  color: var(--color-purple);
+
+  position: absolute;
+  top: 20px;
+  right: 30px;
+
+  transition: .5s;
+  cursor: pointer;
+
+  &:hover {
+    transform: rotate(180deg);
   }
 `;
