@@ -8,7 +8,7 @@ export default function Header() {
       <Wrapper>
         <Link to="/">MovieActions</Link>
  
-        <button type="button">Salvos</button>
+        <Link className="btn" to="/saves">Salvos</Link>
       </Wrapper>
     </Container>
   );

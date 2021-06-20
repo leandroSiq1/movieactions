@@ -29,8 +29,9 @@ export const Wrapper = styled.div`
       opacity: 1;
     }
   }
-  > button {
+  > a.btn {
     padding: 6px 25px;
+    font-size: 16px;
 
     background: var(--color-purple);
     border: 1px solid var(--color-borders);

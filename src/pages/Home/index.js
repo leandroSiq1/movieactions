@@ -12,7 +12,7 @@ export default function Home() {
   const [movieOn, setMovieOn] = useState({});
   const [modalOn, setModalOn] = useState(false);
 
-  const [stateBody, setStateBody] = useState("hidden");
+  const [stateBody, setStateBody] = useState("initial");
 
   useEffect(() => {
     async function loadingMovies() {
@@ -48,7 +48,7 @@ export default function Home() {
       <Container>
         { 
           modalOn ? 
-          <ModalMovie image={movieOn.foto} title={movieOn.nome} text={movieOn.sinopse} callback={closeModalMovie} />
+          <ModalMovie movieId={movieOn.id} image={movieOn.foto} title={movieOn.nome} text={movieOn.sinopse} callback={closeModalMovie} />
           : ""
         }
         {
